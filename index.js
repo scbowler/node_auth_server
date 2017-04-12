@@ -11,7 +11,7 @@ const cors = require('cors');
 mongoose.connect('mongodb://localhost:auth/auth');
 
 // App Setup
-app.use(morgan('combined'));
+//app.use(morgan('combined')); // Disable for production
 app.use(cors());
 app.use(bodyParser.json({ type: '*/*' }));
 router(app);
