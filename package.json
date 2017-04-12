@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": "https://github.com/scbowler/node_auth_server",
   "scripts": {
-    "dev": "nodemon index.js",
+    "dev": "PORT=5555 nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Scott Bowler",
