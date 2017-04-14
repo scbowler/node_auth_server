@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 // DB Setup
+mongoose.Promise = require('q').Promise;
 mongoose.connect('mongodb://localhost:auth/auth');
 
 // App Setup

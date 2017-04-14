@@ -11,16 +11,22 @@ const todoSchema = new Schema({
     userId: String
 });
 
-todoSchema.pre('save', function(next){
+todoSchema.methods.preSave = function(){
 
     this.created = new Date().getTime();
     this.complete = false;
     this.completed = null;
+};
 
-    next();
-});
+todoSchema.methods.toggleComplete = function(){
 
-todoSchema.methods.completeTodo = function(){
+    if(this.complete){
+        this.complete = false;
+        this.completed = null;
+
+        return;
+    }
+
     this.complete = true;
     this.completed = new Date().getTime();
 };
