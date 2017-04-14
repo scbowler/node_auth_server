@@ -14,8 +14,11 @@ module.exports = function(app){
     app.post('/api/signin', requireSignin, Authentication.signin);
     app.post('/api/signup', Authentication.signup);
 
-    app.post('/api/getTodos', Todos.getTodos);
-    app.post('/api/addTodo', Todos.addTodo);
+    app.get('/api/todos', Todos.getTodos);
+    app.get('/api/todos/:todoId', Todos.getTodo);
+    app.post('/api/todos', Todos.addTodo);
+    app.put('/api/todos/:todoId', Todos.completeTodo);
+    app.delete('/api/todos/:todoId', Todos.deleteTodo);
 
     app.get('*', function(req, res){
         res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
