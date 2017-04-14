@@ -44,7 +44,7 @@ exports.getTodos = function(req, res, next){
         return res.status(422).send({success: false, error: 'No user ID included with request'});
     }
 
-    Todo.find({userId: userId}).exec(function(err, todos){
+    Todo.find({userId: userId}).sort({complete: 1}).sort({created: -1}).select('complete title').exec(function(err, todos){
         if(err) return res.status(422).send({success: false, error: 'Unable to fetch To-Do-List'});
 
         res.json({
