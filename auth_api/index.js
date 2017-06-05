@@ -17,13 +17,6 @@ app.use(cors());
 app.use(bodyParser.json({ type: '*/*' }));
 router(app);
 
-// Server Setup
-// const port = process.env.PORT || 80;
-// const server = http.createServer(app);
-
-// server.listen(port);
-// console.log('Server running on port: ', port);
-
 console.log('Auth server files ran');
 
 exports.app = app;
