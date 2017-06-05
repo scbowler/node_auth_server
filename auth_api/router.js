@@ -8,17 +8,17 @@ const requireAuth = passport.authenticate('jwt', { session: false} );
 const requireSignin = passport.authenticate('local', { session: false });
 
 module.exports = function(app){
-    app.get('/api/', requireAuth, function(req, res){
+    app.get('/', requireAuth, function(req, res){
         res.send({ message: 'Here is the secret information you requested: The egg came first.' });
     });
-    app.post('/api/signin', requireSignin, Authentication.signin);
-    app.post('/api/signup', Authentication.signup);
+    app.post('/signin', requireSignin, Authentication.signin);
+    app.post('/signup', Authentication.signup);
 
-    app.get('/api/todos', Todos.getTodos);
-    app.get('/api/todos/:todoId', Todos.getTodo);
-    app.post('/api/todos', Todos.addTodo);
-    app.put('/api/todos/:todoId', Todos.completeTodo);
-    app.delete('/api/todos/:todoId', Todos.deleteTodo);
+    app.get('/todos', Todos.getTodos);
+    app.get('/todos/:todoId', Todos.getTodo);
+    app.post('/todos', Todos.addTodo);
+    app.put('/todos/:todoId', Todos.completeTodo);
+    app.delete('/todos/:todoId', Todos.deleteTodo);
 
     app.get('*', function(req, res){
         res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
