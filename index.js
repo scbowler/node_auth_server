@@ -1,25 +1,14 @@
 const express = require('express');
-const http = require('http');
-const bodyParser = require('body-parser');
-const morgan = require('morgan');
-const app = express();
-const router = require('./router');
-const mongoose = require('mongoose');
-const cors = require('cors');
+const vhost = require('vhost');
+const env = process.env.ENV || 'production';
+const siteAddress = (env === 'dev') ? 'localhost' : 'scottbowlerdev.com';
+const defaultDevPort = 9000;
+const envPort = process.env.PORT;
+const port = envPort ? (env === 'dev' && envPort === '80' ) ? 9000 : envPort : (env === 'dev') ? defaultDevPort : 80;
 
-// DB Setup
-mongoose.Promise = require('q').Promise;
-mongoose.connect('mongodb://localhost:auth/auth');
+express()
+.use(vhost(siteAddress, require('./main').app))
+.use(vhost('api.' + siteAddress, require('./auth_api').app))
+.listen(port);
 
-// App Setup
-//app.use(morgan('combined')); // Disable for production
-app.use(cors());
-app.use(bodyParser.json({ type: '*/*' }));
-router(app);
-
-// Server Setup
-const port = process.env.PORT || 80;
-const server = http.createServer(app);
-
-server.listen(port);
-console.log('Server running on port: ', port);
+console.log('Server running on port:', port);
