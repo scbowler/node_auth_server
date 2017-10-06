@@ -7,9 +7,11 @@ const path = require('path');
 const requireAuth = passport.authenticate('jwt', { session: false} );
 const requireSignin = passport.authenticate('local', { session: false });
 
+const movieQuote = require('./random_quotes');
+
 module.exports = function(app){
     app.get('/', requireAuth, function(req, res){
-        res.send({ message: 'Here is the secret information you requested: The egg came first.' });
+        res.send({ message: 'Random Movie Quote: ' + movieQuote() });
     });
     app.post('/signin', requireSignin, Authentication.signin);
     app.post('/signup', Authentication.signup);

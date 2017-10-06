@@ -17,6 +17,4 @@ app.use(cors());
 app.use(bodyParser.json({ type: '*/*' }));
 router(app);
 
-console.log('Auth server files ran');
-
 exports.app = app;
