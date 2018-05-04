@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
+const db = require('../db');
 const Schema = mongoose.Schema;
-
 
 const todoSchema = new Schema({
     title: String,
@@ -31,6 +31,6 @@ todoSchema.methods.toggleComplete = function(){
     this.completed = new Date().getTime();
 };
 
-const ModelClass = mongoose.model('todo', todoSchema);
+const ModelClass = db.model('todo', todoSchema);
 
 module.exports = ModelClass;
