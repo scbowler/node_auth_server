@@ -9,7 +9,7 @@ const cors = require('cors');
 
 // DB Setup
 mongoose.Promise = require('q').Promise;
-mongoose.connect('mongodb://localhost:auth/auth');
+mongoose.createConnect('mongodb://localhost:api/auth');
 
 // App Setup
 //app.use(morgan('combined')); // Disable for production
