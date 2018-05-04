@@ -10,6 +10,8 @@ express()
 .use(vhost(siteAddress, require('./main').app))
 .use(vhost('api.' + siteAddress, require('./auth_api').app))
 .use(vhost('dev.reactprototypes.com', require('./dev-react-prototypes').app))
-.listen(port);
+.use(vhost('reactprototypes.com', require('./react-prototypes').app))
+.use(vhost('lfzprototypes.com', require('./lfzprototypes').app))
+.listen(port)
 
 console.log('Server running on port:', port);
