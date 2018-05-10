@@ -12,6 +12,8 @@ express()
 .use(vhost('dev.' + siteAddress, require('./dev-react-prototypes').app))
 .use(vhost(siteAddress, require('./react-prototypes').app))
 .use(vhost('lfzprototypes.com', require('./lfzprototypes').app))
+.use(vhost('enrollment.lfzservices.com', require('./enrollment_api/production').app))
+.use(vhost('dev.enrollment.lfzservices.com', require('./dev.enrollment_api/livedev').app))
 .listen(port);
 
 console.log('Server running on port:', port);
