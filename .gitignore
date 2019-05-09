@@ -4,7 +4,10 @@ react-prototypes/
 lfzprototypes/
 dev.lfzprototypes/
 dev.enrollment_api/
-enrollment_api
-fire-chat
+enrollment_api/
+fire-chat/
+sweet-corner-api/
 
 .DS_Store
+.idea
+.vscode
