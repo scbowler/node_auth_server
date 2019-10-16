@@ -17,6 +17,7 @@ express()
 .use(vhost('lfzprototypes.com', require('./lfzprototypes').app))
 .use(vhost('enrollment.lfzservices.com', require('./enrollment_api/production').app))
 .use(vhost('dev.enrollment.lfzservices.com', require('./dev.enrollment_api/livedev').app))
+.use(vhost('bigjohnssurplus.com', require('./big-johns').app))
 .listen(port);
 
 console.log('Server running on port:', port);
